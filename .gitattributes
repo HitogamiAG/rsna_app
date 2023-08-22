@@ -1,0 +1,2 @@
+clf_server/weights filter=lfs diff=lfs merge=lfs -text
+segm_server/weights filter=lfs diff=lfs merge=lfs -text

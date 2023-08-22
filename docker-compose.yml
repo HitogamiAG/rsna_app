@@ -1,0 +1,38 @@
+version: '3'
+services:
+  client:
+    image: rsna:client
+    container_name: client
+    ports:
+      - 8501:8501
+    networks:
+      - network
+
+  server:
+    image: rsna:server
+    container_name: server
+    ports:
+      - 8000:8000
+    networks:
+      - network
+
+  segm:
+    image: rsna:segm
+    container_name: segm
+    ports:
+      - 8001:8001
+    networks:
+      - network
+
+  clf:
+    image: rsna:clf
+    container_name: clf
+    ports:
+      - 8002:8002
+    networks:
+      - network
+
+networks:
+  network:
+    driver: bridge
+    name: rsna_network

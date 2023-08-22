@@ -1,0 +1,7 @@
+server/__pycache__
+segm_server/test_data
+clf_server/test_data
+server/.envc
+clf_server/envc.py
+client/.envc
+segm_server/envc.py
