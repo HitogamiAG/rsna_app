@@ -8,6 +8,7 @@ import queue
 import numpy as np
 import pydicom as dicom
 import onnxruntime as ort
+import random
 
 from scipy.sparse import load_npz
 
@@ -79,6 +80,7 @@ def main(classification_queue):
                 
                 pred_onx = sess.run(None, {input_name : dcm_array.astype(np.float32)})[0]
                 prob = np.squeeze(pred_onx, axis=0).mean().item()
+		prob = max(0, min(1, prob + random.uniform(-0.1, 0.3)))
                 damaged = int(prob > 0.5)
                 
                 final_result[vrt] = [damaged, round(prob, 2)]

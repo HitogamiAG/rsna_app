@@ -8,6 +8,9 @@ import numpy as np
 import pyvista as pv
 import trimesh
 
+from pyvista.plotting.utilities import xvfb
+xvfb.start_xvfb()
+
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -51,7 +54,7 @@ if option is not None and button:
             'LastZ'  : last_z,
             'ShiftZ' : (first_z * slice_thickness) - (slice_thickness / 2)
         }
-    
+    print(spines_cords)
     plotter = pv.Plotter()
 
     for index, spine in enumerate(spines_cords.keys()):
@@ -80,4 +83,4 @@ if option is not None and button:
     plotter.camera.focal_point = (0.2, 0.3, 0.3)
     plotter.camera.up = (0.0, 1.0, 0.0)
     plotter.camera.zoom(1.4)
-    stpyvista(plotter, key = 'Spines')
+    stpyvista(plotter, key='Spines')

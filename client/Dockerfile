@@ -9,11 +9,15 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-COPY ./client/. .
+ENV PYVISTA_OFF_SCREEN=true
+
+RUN apt-get update && apt-get install ffmpeg libsm6 libxext6 xvfb libgl1-mesa-dev -y
+
+COPY requirements.txt .
 
 RUN pip3 install -r requirements.txt
 
-RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
+COPY . .
 
 EXPOSE 8501
 

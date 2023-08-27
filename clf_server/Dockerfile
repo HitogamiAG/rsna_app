@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN apt-get update && apt-get update && apt-get install ffmpeg libsm6 libxext6 -y
 
-COPY ./clf_server/. .
+COPY . .
 
 RUN pip3 install -r requirements.txt
 

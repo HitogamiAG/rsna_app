@@ -2,6 +2,9 @@ version: '3'
 services:
   client:
     image: rsna:client
+    build: ./client
+    mem_limit: 8g
+    cpus: 4.0
     container_name: client
     ports:
       - 8501:8501
@@ -10,6 +13,7 @@ services:
 
   server:
     image: rsna:server
+    build: ./server
     container_name: server
     ports:
       - 8000:8000
@@ -18,6 +22,7 @@ services:
 
   segm:
     image: rsna:segm
+    build: ./segm_server
     container_name: segm
     ports:
       - 8001:8001
@@ -26,6 +31,7 @@ services:
 
   clf:
     image: rsna:clf
+    build: ./clf_server
     container_name: clf
     ports:
       - 8002:8002

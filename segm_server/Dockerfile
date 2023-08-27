@@ -9,9 +9,11 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-COPY ./server/. .
+RUN apt-get update && apt-get update && apt-get install ffmpeg libsm6 libxext6 -y
+
+COPY . .
 
 RUN pip3 install -r requirements.txt
 
-ENTRYPOINT ["uvicorn", "app:app", "--reload", "--port", "8000", "--host", "0.0.0.0"]
+ENTRYPOINT ["uvicorn", "main:app", "--reload", "--port", "8001", "--host", "0.0.0.0"]
 
